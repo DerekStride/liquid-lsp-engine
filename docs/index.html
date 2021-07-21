@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Playground
 ---
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/codemirror.min.css">
@@ -34,5 +35,8 @@ layout: default
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/codemirror.min.js"></script>
+
+<script>LANGUAGE_BASE_URL = "/assets/js";</script>
+<script src="{{ '/assets/js/tree-sitter.js' | relative_url }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.js"></script>
-<script src="{{ '/assets/js/liquidCompletionEngine.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/playground.js' | relative_url }}"></script>
