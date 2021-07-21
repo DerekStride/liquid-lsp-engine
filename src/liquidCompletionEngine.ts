@@ -1,6 +1,7 @@
 import {readFileSync} from 'fs';
 import * as Parser from 'web-tree-sitter';
 import * as YAML from 'yaml';
+import {Filters} from './shopifyConfig';
 
 interface Position {
   row: number;
@@ -9,7 +10,6 @@ interface Position {
 
 export class LiquidCompletionEngine {
   parser: Parser | undefined;
-  filters: any;
 
   constructor(
     configFile: string,
@@ -19,15 +19,6 @@ export class LiquidCompletionEngine {
       Parser.Language.load('./lib/tree-sitter-liquid.wasm').then((language) => {
         this.parser!.setLanguage(language);
       })
-    });
-
-    const file = readFileSync(configFile);
-    const config = YAML.parse(file.toString());
-    this.filters = Object.values(config).flat().map((val, idx) => {
-      return {
-        label: val,
-        data: idx,
-      }
     });
   }
 
@@ -48,7 +39,7 @@ export class LiquidCompletionEngine {
       );
 
       if (captures.length > 0) {
-        return this.filters;
+        return Filters;
       }
     }
     return [];

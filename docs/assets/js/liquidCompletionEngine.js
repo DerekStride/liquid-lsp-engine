@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LiquidCompletionEngine = void 0;
-const fs_1 = require("fs");
 const Parser = require("web-tree-sitter");
-const YAML = require("yaml");
+const shopifyConfig_1 = require("./shopifyConfig");
 class LiquidCompletionEngine {
     constructor(configFile) {
         Parser.init().then(() => {
@@ -11,14 +10,6 @@ class LiquidCompletionEngine {
             Parser.Language.load('./lib/tree-sitter-liquid.wasm').then((language) => {
                 this.parser.setLanguage(language);
             });
-        });
-        const file = fs_1.readFileSync(configFile);
-        const config = YAML.parse(file.toString());
-        this.filters = Object.values(config).flat().map((val, idx) => {
-            return {
-                label: val,
-                data: idx,
-            };
         });
     }
     complete(text, cursorPosition) {
@@ -29,11 +20,11 @@ class LiquidCompletionEngine {
             const character = cursorPosition.column;
             const captures = query.captures(tree.rootNode, { row: line, column: character - 1 }, { row: line, column: character });
             if (captures.length > 0) {
-                return this.filters;
+                return shopifyConfig_1.Filters;
             }
         }
         return [];
     }
 }
 exports.LiquidCompletionEngine = LiquidCompletionEngine;
-//# sourceMappingURL=liquid_completion_engine.js.map
+//# sourceMappingURL=liquidCompletionEngine.js.map
