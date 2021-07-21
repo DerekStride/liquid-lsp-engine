@@ -1,0 +1,34 @@
+{
+	"name": "liquid-lsp-engine",
+	"version": "1.0.0",
+	"description": "The language server engine for liquid using tree-sitter",
+	"scripts": {
+		"compile": "tsc -b",
+		"watch": "tsc -b -w"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Shopify/liquid-lsp-engine.git"
+	},
+	"keywords": [
+		"tree-sitter"
+	],
+	"author": "Justin Fleming",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Shopify/liquid-lsp-engine/issues"
+	},
+	"homepage": "https://github.com/Shopify/liquid-lsp-engine#readme",
+	"devDependencies": {
+		"@types/mocha": "^8.2.2",
+		"@types/node": "^12.12.0",
+		"@typescript-eslint/eslint-plugin": "^4.23.0",
+		"@typescript-eslint/parser": "^4.23.0",
+		"eslint": "^7.26.0",
+		"mocha": "^8.3.2",
+		"typescript": "^4.3.5",
+		"web-tree-sitter": "^0.19.4",
+		"yaml": "^1.10.2"
+	}
+}
+
