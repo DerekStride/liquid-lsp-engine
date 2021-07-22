@@ -45,7 +45,7 @@ let tree;
   await TreeSitter.init();
 
   const parser = new TreeSitter();
-  const url = `${LANGUAGE_BASE_URL}/tree-sitter-liquid.wasm`
+  const url = `${LANGUAGE_BASE_URL}/tree-sitter-liquid.wasm`.replace("http:", "https:")
   try {
     language = await TreeSitter.Language.load(url);
   } catch (e) {
