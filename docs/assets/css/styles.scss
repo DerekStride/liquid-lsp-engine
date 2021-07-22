@@ -5,21 +5,47 @@ $padding: 20px;
 $sidebar-width: 300px;
 $sidebar-transition: left 0.25s;
 $container-width: 1024px;
+$background-color: #191a1a;
+$text-color: #9d9b97;
+$link-clor: #9b859d;
 
 body {
   overflow: scroll;
-  font-family: Helvetica-Neue, Arial, sans-serif
+  font-family: Helvetica-Neue, Arial, sans-serif;
+  background: $background-color;
+}
+
+h1 {
+  color: $text-color;
+  
+}
+
+h2 {
+  color: $text-color;
+}
+
+label {
+  color: $text-color;
 }
 
 a[href^="http"]:after {
   content: "";
   display: inline-block;
   transform: translate(0px, 2px);
+  color: $text-color;
   width: .9em;
   height: .9em;
   margin-left: 3px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'%3E%3Cpath d='M20 3h-5a1 1 0 1 0 0 2h3L8 14a1 1 0 1 0 2 2l9-10v3a1 1 0 1 0 2 0V4a1 1 0 0 0-1-1zM5 3L3 5v14l2 2h14l2-2v-6a1 1 0 1 0-2 0v6H5V5h6a1 1 0 1 0 0-2H5z'/%3E%3C/svg%3E");
   background-size: cover;
+}
+
+a {
+  color: $text-color;
+}
+
+div {
+  color: $text-color
 }
 
 #container {
@@ -200,7 +226,7 @@ a.highlighted {
   box-shadow: 2px 3px 5px rgba(0,0,0,.2);
   border-radius: 3px;
   border: 1px solid silver;
-  background: white;
+  background: $background-color;
   font-family: monospace;
   max-height: 20em;
   overflow-y: auto;
@@ -210,11 +236,11 @@ a.highlighted {
   padding: 0 4px;
   border-radius: 2px;
   white-space: pre;
-  color: black;
+  color: $text-color;
   cursor: pointer;
   font-size: 14pt;
 }
 li.CodeMirror-hint-active {
   background: #08f;
-  color: white;
+  color: $text-color;
 }

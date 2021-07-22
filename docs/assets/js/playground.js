@@ -49,12 +49,16 @@ let tree;
     showCursorWhenSelecting: true
   });
 
+  codeEditor.setOption("theme", "bespin")
+
   const completionEngine = new LiquidLspEngine.default(parser);
 
   const queryEditor = CodeMirror.fromTextArea(queryInput, {
     lineNumbers: true,
     showCursorWhenSelecting: true
   });
+
+  queryEditor.setOption("theme", "bespin")
   
   const cluster = new Clusterize({
     rows: [],
