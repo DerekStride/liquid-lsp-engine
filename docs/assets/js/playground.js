@@ -3,6 +3,15 @@ let tree;
 (async () => {
   const CAPTURE_REGEX = /@\s*([\w\._-]+)/g;
   const COLORS_BY_INDEX = [
+    '#54be0d',
+    '#cf6a4c',
+    '#f9ee98',
+    '#54be0d',
+    '#5ea6ea',
+    '#cf7d34',
+    '#9d9b97',
+    '#cf6a4c',
+    '#9b859d',
     'blue',
     'chocolate',
     'darkblue',
