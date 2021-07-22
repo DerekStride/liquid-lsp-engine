@@ -21,5 +21,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'docs/assets/js'),
+    libraryTarget: "var",
+    library: "LiquidLspEngine"
   },
 };

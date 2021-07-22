@@ -9,38 +9,32 @@ interface Position {
 }
 
 export class LiquidCompletionEngine {
-  parser: Parser | undefined;
+  parser: Parser;
 
   constructor(
-    configFile: string,
+    parser: Parser,
   ) {
-    Parser.init().then(() => {
-      this.parser = new Parser();
-      Parser.Language.load('./lib/tree-sitter-liquid.wasm').then((language) => {
-        this.parser!.setLanguage(language);
-      })
-    });
+    this.parser = parser
   }
 
   complete(
     text: string,
     cursorPosition: Position
-  ) : any {
-    if (this.parser) {
-      const query = this.parser.getLanguage().query("(filter name: (identifier) @filter.name)");
-      const tree = this.parser.parse(text);
-      const line = cursorPosition.row;
-      const character = cursorPosition.column;
+  ) : any[] {
+    const query = this.parser.getLanguage().query("(filter name: (identifier) @filter.name)");
+    const tree = this.parser.parse(text);
+    const line = cursorPosition.row;
+    const character = cursorPosition.column;
 
-      const captures = query.captures(
-        tree.rootNode,
-        { row: line, column: character - 1 },
-        { row: line, column: character }
-      );
+    const captures = query.captures(
+      tree.rootNode,
+      { row: line, column: character - 1 },
+      { row: line, column: character }
+    );
 
-      if (captures.length > 0) {
-        return Filters;
-      }
+    if (captures.length > 0) {
+      const filterText = captures[0].node.text
+      return Filters.filter(option => option.startsWith(filterText));
     }
     return [];
   }

@@ -49,11 +49,13 @@ let tree;
     showCursorWhenSelecting: true
   });
 
+  const completionEngine = new LiquidLspEngine.default(parser);
+
   const queryEditor = CodeMirror.fromTextArea(queryInput, {
     lineNumbers: true,
     showCursorWhenSelecting: true
   });
-
+  
   const cluster = new Clusterize({
     rows: [],
     noDataText: null,
@@ -96,6 +98,22 @@ let tree;
     const newTree = parser.parse(newText, tree);
     const duration = (performance.now() - start).toFixed(1);
 
+    const cursor = codeEditor.getDoc().getCursor();
+    const completeOptions = completionEngine.complete(codeEditor.getValue(), {row: cursor.line, column: cursor.ch})
+    if(completeOptions.length > 0)
+    {
+      const options = {
+        hint: () => {
+          return {
+            from: CodeMirror.Pos(cursor.line, getStartOfWordPosition(codeEditor.getLine(cursor.line), cursor)),
+            to: codeEditor.getDoc().getCursor(),
+            list: completeOptions,
+          }},
+          completeSingle: false
+        }
+      codeEditor.showHint(options)
+    }
+
     updateTimeSpan.innerText = `${duration} ms`;
     if (tree) tree.delete();
     tree = newTree;
@@ -103,6 +121,12 @@ let tree;
     renderTreeOnCodeChange();
     runTreeQueryOnChange();
     saveStateOnChange();
+  }
+
+  function getStartOfWordPosition(doc, cursor) {
+    let start = cursor.ch;
+    while (start && /\w/.test(doc.charAt(start - 1))) --start
+    return start;
   }
 
   async function renderTree() {
