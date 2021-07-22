@@ -8,6 +8,7 @@ $container-width: 1024px;
 
 body {
   overflow: scroll;
+  font-family: Helvetica-Neue, Arial, sans-serif
 }
 
 a[href^="http"]:after {
@@ -141,6 +142,7 @@ a > span {
     height: auto;
     max-height: 350px;
     border: 1px solid #aaa;
+    font-size: 14pt;
   }
 
   .CodeMirror-scroll {
@@ -148,7 +150,7 @@ a > span {
     max-height: 350px;
   }
 
-  h4, select, .field, label {
+  h2, h4, select, .field, label {
     display: inline-block;
     margin-right: 20px;
   }
@@ -165,6 +167,7 @@ a > span {
 #output-container {
   padding: 0 10px;
   margin: 0;
+  font-size: 14pt;
 }
 
 #output-container-scroll {
@@ -198,7 +201,6 @@ a.highlighted {
   border-radius: 3px;
   border: 1px solid silver;
   background: white;
-  font-size: 90%;
   font-family: monospace;
   max-height: 20em;
   overflow-y: auto;
@@ -210,6 +212,7 @@ a.highlighted {
   white-space: pre;
   color: black;
   cursor: pointer;
+  font-size: 14pt;
 }
 li.CodeMirror-hint-active {
   background: #08f;

@@ -100,8 +100,7 @@ let tree;
 
     const cursor = codeEditor.getDoc().getCursor();
     const completeOptions = completionEngine.complete(codeEditor.getValue(), {row: cursor.line, column: cursor.ch})
-    if(completeOptions.length > 0)
-    {
+    if(completeOptions.length > 0) {
       const options = {
         hint: () => {
           return {
@@ -112,6 +111,8 @@ let tree;
           completeSingle: false
         }
       codeEditor.showHint(options)
+    } else {
+      codeEditor.closeHint()
     }
 
     updateTimeSpan.innerText = `${duration} ms`;

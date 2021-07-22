@@ -34,7 +34,7 @@ export class LiquidCompletionEngine {
 
     if (captures.length > 0) {
       const filterText = captures[0].node.text
-      return Filters.filter(option => option.startsWith(filterText));
+      return Filters.filter(option => option.startsWith(filterText) && option !== filterText);
     }
     return [];
   }

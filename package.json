@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "The language server engine for liquid using tree-sitter",
 	"scripts": {
+		"build": "webpack",
 		"compile": "tsc -b",
 		"watch": "tsc -b -w"
 	},
